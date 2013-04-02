@@ -1,0 +1,42 @@
+New spec files for Freescale BSP (ltib)
+---------------------------------------
+
+These spec files are meant to upgrade packages and add new ones (like dependencies). 
+
+All the functionalities of the system weren't tested after these modifications, so please, take your own risk after upgrading or changing anything in your bsp.
+
+
+Packages
+--------
+
+the packages can be downloaded from the link specified in the spec file.
+
+
+Installation
+------------
+
+the original spec files can be found at:
+
+../ltib/dist/lfs-5.1/
+
+if you are going to update glib2 for example, you have to replace the orignal spec file for the spec file in this repository, download the packages, copy them to the bsp packages folder and perform the build commands:
+
+1) cp -rf ../git/ltib-pkgs-upgrade/glib2.spec ../ltib/dist/lfs-5.1/glib2/glib2.spec
+2) cp ../downlaoded_pkgs/glib-2.35.9.tar.xz /opt/freescale/pkgs
+3) ../ltib/./ltib -p glib2.spec -m prep
+4) ../ltib/./ltib -p glib2.spec -m scbuild
+5) ../ltib/./ltib -p glib2.spec -m scdeploy
+
+if you are going to add a new package, you have to create a folder with the package name in ../ltib/dist/lfs-5.1/ and then follow the procedure above.
+
+
+PATCHES
+-------
+
+if any spec file refers to a specific patch, this patch has to be placed together with the package, in this case in /opt/freescale/pkgs folder.
+
+
+
+
+EOF !
+
